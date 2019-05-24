@@ -35,9 +35,9 @@ public class ValidMountainArray {
         if(A.length < 3)  {
             return false;
         }
-        int tmp = 0;
         if(A[0] > A[1]) return false;
         if(A[A.length-1] > A[A.length-2]) return false;
+        int tmp = 0;
         for(int i = 1; i < A.length; i++) {
             if(A[i] < A[i-1]) {
                 tmp = i;
