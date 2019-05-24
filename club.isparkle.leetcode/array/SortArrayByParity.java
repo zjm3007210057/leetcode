@@ -1,7 +1,5 @@
 package array;
 
-import java.util.Arrays;
-
 /**
  * 905. Sort Array By Parity
  *
