@@ -30,7 +30,7 @@ public class NextPermutation {
             nums[1] = tmp;
             return;
         }
-        //find the element index i which nums[i] > nums[i-1], then we only need find the minimum element from i to nums.length and makes nums[minimum] > nums[i-1].
+        //find the element index i which nums[i] > nums[i-1] , then we only need find the minimum element from i to nums.length and makes nums[minimum] > nums[i-1].
         //swap nums[minimum] and nums[i-1], finally, just swap remainder elements from i to nums.length
         for(int i = nums.length - 1; i > 0; i--) {
             if(nums[i] > nums[i-1]) {
@@ -56,6 +56,7 @@ public class NextPermutation {
                 return;
             }
         }
+        //in case nums is sorted in desc order
         for(int i = 0; i < (nums.length + 1) / 2; i++) {
             tmp = nums[i];
             nums[i] = nums[nums.length-1-i];
