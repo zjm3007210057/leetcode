@@ -54,6 +54,9 @@ public class CombinationSum {
             if(i > 0 && arr[i] == arr[i - 1]) {
                 continue;
             }
+            if(target < arr[i]) {
+                break;
+            }
             list.add(arr[i]);
             help(arr, i, target - arr[i], res, list);
             list.remove(list.size() - 1);
