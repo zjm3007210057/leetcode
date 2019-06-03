@@ -56,6 +56,7 @@ public class CombinationSumII {
         }
         for(int i = start; i < arr.length; i++) {
             if(!visited[i]) {
+                //if target is smaller than arr[i], that means target is smaller than all the right elements, so we can break it directly.
                 if(target < arr[i]) {
                     break;
                 }
