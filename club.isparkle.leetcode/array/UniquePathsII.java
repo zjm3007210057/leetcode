@@ -1,9 +1,5 @@
 package array;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * 63. Unique Paths II
  *
