@@ -1,33 +1,34 @@
 package array;
-import java.until.Set;
-import java.until.HashSet;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 73. Set Matrix Zeroes
  *
  * Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.
  * Example 1:
- * Input: 
+ * Input:
  * [
  *   [1,1,1],
  *   [1,0,1],
  *   [1,1,1]
  * ]
- * Output: 
+ * Output:
  * [
  *   [1,0,1],
  *   [0,0,0],
  *   [1,0,1]
  * ]
- * 
+ *
  * Example 2:
- * Input: 
+ * Input:
  * [
  *   [0,1,2,0],
  *   [3,4,5,2],
  *   [1,3,1,5]
  * ]
- * Output: 
+ * Output:
  * [
  *  [0,0,0,0],
  *  [0,4,5,0],
@@ -40,10 +41,10 @@ import java.until.HashSet;
  *
  * Created by zjm on 2019/6/7.
  */
- 
+
  public class SetMatrixZeroes {
-      
-    //use two Set to remember the row and col of the element in matrix which value is 0, respectively 
+
+    //use two Set to remember the row and col of the element in matrix which value is 0, respectively
     public void setZeroes(int[][] matrix) {
         if(matrix.length < 1) {
             return;
@@ -75,8 +76,8 @@ import java.until.HashSet;
             }
         }
     }
-    
-    //use the first element of each row and col to remember the row and col of the element in matrix which value is 0, respectively 
+
+    //use the first element of each row and col to remember the row and col of the element in matrix which value is 0, respectively
     public void setZeroesBetter(int[][] matrix) {
         if(matrix.length < 1) {
             return;
@@ -112,5 +113,5 @@ import java.until.HashSet;
         }
     }
  }
- 
- 
+
+
