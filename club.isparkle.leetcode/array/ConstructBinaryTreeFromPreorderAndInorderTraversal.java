@@ -37,6 +37,9 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
         if(start > end || begin > last) {
             return null;
         }
+        if(begin == last) {
+            return new TreeNode(in[last]);
+        }
         int rootIndex = 0;
         for(int i = begin; i <= last; i++) {
             if(in[i] == pre[start]) {
@@ -60,6 +63,9 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
         if (end < begin) {
             return null;
         }
+        if(end == begin) {
+            return new TreeNode(in[end]);
+        }
         TreeNode node = new TreeNode(pre[start]);
 
         // the rootIndex of current node in inorder
@@ -81,13 +87,6 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
         }
 
         return node;
-    }
-
-    class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
     }
 
 }
