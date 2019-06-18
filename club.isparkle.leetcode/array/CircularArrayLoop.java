@@ -51,7 +51,7 @@ public class CircularArrayLoop {
 
     public boolean circularArrayLoop(int[] nums) {
         for(int i = 0; i < nums.length; ++i){
-            int cur = i, count = 0, dir = 0, prev = i;
+            int cur = i, dir = 0, prev = i;
             while(nums[cur] <= 1000){
                 prev = cur;
                 int t = (cur + nums[cur])%nums.length;
