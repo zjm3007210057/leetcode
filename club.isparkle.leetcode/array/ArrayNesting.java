@@ -54,4 +54,20 @@ public class ArrayNesting {
         return max;
     }
 
+    public int arrayNestingBetter(int[] nums) {
+        int max = 0, count, index, tmp;
+        for(int i = 0; i < nums.length; i++) {
+            count = 0;
+            index = i;
+            while(nums[index] != -1) {
+                tmp = index;
+                count++;
+                index = nums[index];
+                nums[tmp] = -1;
+            }
+            max = Math.max(max, count);
+        }
+        return max;
+    }
+
 }
