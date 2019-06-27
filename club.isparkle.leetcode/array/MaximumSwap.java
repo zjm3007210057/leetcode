@@ -23,7 +23,7 @@ public class MaximumSwap {
     //1.compare the highest bit of the num with the remain bits
     //2.if there is a bit is bigger than the highest bit, then, find the largest bit from remain bits and
     //swap the highest bit with the largest bit and return the result.
-    //else, repeat step 1.
+    //else, repeat the step 1.
     public int maximumSwap(int num) {
         String s = String.valueOf(num);
         char[] chars = s.toCharArray();
@@ -33,6 +33,7 @@ public class MaximumSwap {
                     int index = j;
                     int max = chars[j];
                     for(int k = j + 1; k < chars.length; k++) {
+                        //find the largest bit
                         if(chars[k] >= max) {
                             max = chars[k];
                             index = k;
