@@ -56,7 +56,7 @@ public class RevealCardsInIncreasingOrder {
     public int[] deckRevealedIncreasing(int[] deck) {
         int[] res = new int[deck.length];
         Arrays.sort(deck);
-        LinkedList<Integer> queue = new LinkedList<>();
+        LinkedList<Integer> queue = new LinkedList();
         for(int i = deck.length - 1; i >= 1; i--) {
             queue.addFirst(deck[i]);
             queue.addFirst(queue.pollLast());
@@ -67,4 +67,5 @@ public class RevealCardsInIncreasingOrder {
         }
         return res;
     }
+
 }
