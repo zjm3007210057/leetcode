@@ -62,7 +62,7 @@ package string;
  */
 public class StringCompression {
 
-    //采用StringBuilder，最后注意需要将原数组值替换
+    //使用StringBuilder，注意最后要将原数组做改变
     public int compress(char[] chars) {
         if(chars.length <= 1) {
             return chars.length;
@@ -92,6 +92,37 @@ public class StringCompression {
             chars[j] = ch[j];
         }
         return ch.length;
+    }
+
+    //不使用StringBuilder，直接在原来的数组上进行修改
+    public int compressBetter(char[] chars) {
+        if(chars.length <= 1) {
+            return chars.length;
+        }
+        int tmp = 1;
+        int res = 0;
+        int index = 0;
+        for(int i = 0; i < chars.length - 1; i++) {
+            res++;
+            chars[index++] = chars[i];
+            while(i < chars.length - 1 && chars[i] == chars[i+1]) {
+                tmp++;
+                i++;
+            }
+            if(tmp > 1) {
+                char[] cs = String.valueOf(tmp).toCharArray();
+                res += cs.length;
+                for(int j = 0; j < cs.length; j++) {
+                    chars[index++] = cs[j];
+                }
+            }
+            if(i == chars.length - 2 && chars[i] != chars[i+1]) {
+                res++;
+                chars[index++] = chars[i+1];
+            }
+            tmp = 1;
+        }
+        return res;
     }
 
 }
