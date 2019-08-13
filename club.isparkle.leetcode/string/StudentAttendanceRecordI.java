@@ -8,6 +8,7 @@ package string;
  * 'A' : Absent.
  * 'L' : Late.
  * 'P' : Present.
+ *
  * A student could be rewarded if his attendance record doesn't contain more
  * than one 'A' (absent) or more than two continuous 'L' (late).
  * <p>
