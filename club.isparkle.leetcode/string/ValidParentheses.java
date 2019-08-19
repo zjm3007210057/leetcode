@@ -59,8 +59,4 @@ public class ValidParentheses {
         }
         return stack.size() == 0;
     }
-
-    public static void main(String[] args) {
-        System.out.println(2+16*15+2*256+12*256*16+2*256*256+8*256*256*256*16l);
-    }
 }
