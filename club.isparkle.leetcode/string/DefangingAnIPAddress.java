@@ -33,4 +33,9 @@ public class DefangingAnIPAddress {
         }
         return sb.toString();
     }
+
+    //使用字符串自有的替代字符方法
+    public String defangIPaddr2(String address) {
+        return address.replaceAll("\\.", "[.]");
+    }
 }
