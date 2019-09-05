@@ -33,13 +33,16 @@ public class GenerateParentheses {
         if(left > right) {
             return;
         }
+        //递归出口，找到了一个正确结果
         if(left == 0 && right == 0) {
             res.add(s);
             return;
         }
+        //第一次递归，左子树
         if(left > 0) {
             dfs(res, s + "(", left - 1, right);
         }
+        //第二次递归，右子树
         if(right > 0) {
             dfs(res, s + ")", left, right - 1);
         }
