@@ -75,6 +75,38 @@ public class MultiplyStrings {
         return new String(cs).substring(0, tmp + 1);
     }
 
+    //上面方法的优化，先用整数数组来存放，最后再转成字符
+    public String multiplyBetter(String num1, String num2) {
+        if(num1.length() < 1 || num2.length() < 1) {
+            return "";
+        }
+        if(num1.equals("0") || num2.equals("0")) {
+            return "0";
+        }
+        int m = num1.length(), n = num2.length();
+        int[] res = new int[m+n];
+        for(int i = m-1; i >= 0; i--) {
+            int digit1 = num1.charAt(i) - '0';
+            for(int j = n-1; j >= 0; j--) {
+                int digit2 = num2.charAt(j)-'0';
+                res[i+j+1] += digit1 * digit2;
+                res[i+j] += res[i+j+1] / 10;
+                res[i+j+1] = res[i+j+1] % 10;
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < res.length; i++) {
+            if(sb.length() == 0 && res[i] == 0) continue;
+            sb.append(res[i]);
+        }
+
+        if(sb.length() == 0) {
+            sb.append(0);
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
         MultiplyStrings ms = new MultiplyStrings();
         System.out.println(ms.multiply("9102908", "7602608"));
