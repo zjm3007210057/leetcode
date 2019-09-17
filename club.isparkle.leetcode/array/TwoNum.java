@@ -47,6 +47,7 @@ public class TwoNum {
         return null;
     }
 
+    //直接使用map存放元素，每次放元素之前判断target-nums[i]是否已经在map当中，如果已经存在，则直接返回两个下标
     public int[] twoSumMoreFast(int[] nums, int target) {
         if(null == nums || nums.length <= 1) {
             return null;
