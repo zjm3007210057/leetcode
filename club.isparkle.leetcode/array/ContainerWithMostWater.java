@@ -51,8 +51,9 @@ public class ContainerWithMostWater {
         while (l < r) {
             min = Math.min(height[l], height[r]);
             max = Math.max(max, min * (r - l));
-            while (l < r && height[l] == min) l++;
-            while (l < r && height[r] == min) r--;
+            //如果前一个值不大于当前的值，则直接跳过
+            while (l < r && height[l] <= min) l++;
+            while (l < r && height[r] <= min) r--;
         }
         return max;
     }
