@@ -66,4 +66,19 @@ public class RemoveDuplicatesFromSortedArray {
         return res;
     }
 
+    public int removeDuplicates2(int[] nums) {
+        if(nums.length < 2) {
+            return nums.length;
+        }
+        int res = 1;
+        for(int i = 1; i < nums.length; i++) {
+            //跳过相等的元素
+            while(i < nums.length && nums[i] == nums[i-1]) i++;
+            if(i < nums.length) {
+                nums[res++] = nums[i];
+            }
+        }
+        return res;
+    }
+
 }
