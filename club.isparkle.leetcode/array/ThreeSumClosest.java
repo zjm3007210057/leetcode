@@ -17,6 +17,8 @@ import java.util.Arrays;
 public class ThreeSumClosest {
 
     //the solution is just like ThreeSum
+    //首先排序，然后先固定一个值，再加上两个数与target之间的差值，加上的两个数分别在固定数字的前一个和最后一个，
+    //每次求的差值和之前的差值进行比较，如果小于则更新差值和结果。
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
         int res = nums[0] + nums[1] + nums[2];
