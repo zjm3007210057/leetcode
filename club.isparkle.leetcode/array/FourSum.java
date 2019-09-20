@@ -27,6 +27,7 @@ import java.util.List;
 public class FourSum {
 
     //solution just like ThreeSum
+    //先固定一个值，然后转换为3个数字的和，可以参照三个数求和的方法
     public List<List<Integer>> fourSum(int[] nums, int target) {
         Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList();
