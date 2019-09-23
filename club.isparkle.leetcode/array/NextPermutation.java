@@ -19,6 +19,9 @@ import java.util.Arrays;
  */
 public class NextPermutation {
 
+    //该题的意思是要找到此时给出的数字的下一个排列，什么意思呢？就是把这个数组当成一个整数，将各位数字重新排列，
+    //能获取的所有整数中和当前的数差值最新，如果当前的值已经是最大值，那么下一个排列就是最小值。
+    //比如：{1, 2, 3, 4},化成整数为：1234，那么1，2，3，4全部可能组成的四位数中和1234相差最小的为:1243,即所求结果为{1, 2, 4, 3}
     public void nextPermutation(int[] nums) {
         if(nums.length < 2) {
             return;
@@ -57,6 +60,7 @@ public class NextPermutation {
             }
         }
         //in case nums is sorted in desc order
+        //如果当前传入的数组是按照由大到小的排列顺序，则将数组翻转
         for(int i = 0; i < (nums.length + 1) / 2; i++) {
             tmp = nums[i];
             nums[i] = nums[nums.length-1-i];
