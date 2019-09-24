@@ -51,4 +51,25 @@ public class SearchInsertPosition {
         return left;
     }
 
+    //使用二分法，找出与target相等的最左下标，如果找不到，则判断nums[l]和target的大小得出最终的位置
+    public int searchInsert2(int[] nums, int target) {
+        int l = 0, r = nums.length - 1;
+        int res = -1;
+        while(l < r) {
+            int m = (r - l) / 2 + l;
+            if(nums[m] == target) {
+                res = m;
+                r = m - 1;
+            }else if(nums[m] < target) {
+                l = m + 1;
+            }else {
+                r = m - 1;
+            }
+        }
+        if(res > -1) {
+            return res;
+        }
+        return nums[l] < target ? l + 1 : l;
+    }
+
 }
