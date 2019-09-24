@@ -75,6 +75,7 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
     }
 
     //use binary search, first find the left index, then, find the end index
+    //分别使用两次二分法，先找到最左边的下标，再找最右边的下标
     public int[] searchRangeSimple(int[] nums, int target) {
         int l = 0;
         int r = nums.length - 1;

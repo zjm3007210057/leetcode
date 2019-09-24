@@ -43,6 +43,7 @@ public class SearchInRotatedSortedArray {
                 return mid;
             }
             if(nums[mid] < nums[r]) {
+                //分类处理，先取顺序排列的情景
                 if(nums[mid] < target && nums[r] >= target) {
                     l = mid + 1;
                 }else {
