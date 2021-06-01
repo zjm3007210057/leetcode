@@ -6,8 +6,11 @@ import java.util.List;
 /**
  * 989. Add to Array-Form of Integer
  *
- * For a non-negative integer X, the array-form of X is an array of its digits in left to right order.  For example, if X = 1231, then the array form is [1,2,3,1].
- * Given the array-form A of a non-negative integer X, return the array-form of the integer X+K.
+ * For a non-negative integer X, the array-form of X is an array of
+ * its digits in left to right order.  For example, if X = 1231,
+ * then the array form is [1,2,3,1].
+ * Given the array-form A of a non-negative integer X,
+ * return the array-form of the integer X+K.
  *
  * Example 1:
  * Input: A = [1,2,0,0], K = 34
@@ -39,7 +42,8 @@ import java.util.List;
  */
 public class AddToArrayFormOfInteger {
 
-    //judge each element in A plus K % 10 large than 10 or not, use temporary variable overflow store the result
+    //judge each element in A plus K % 10 large than 10 or not,
+    // use temporary variable overflow store the result
     //notice, the length of K may longer than A's
     public List<Integer> addToArrayForm(int[] A, int K) {
         List<Integer> l = new ArrayList();

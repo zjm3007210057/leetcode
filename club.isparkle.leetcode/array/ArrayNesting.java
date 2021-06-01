@@ -6,9 +6,13 @@ import java.util.Map;
 /**
  * 565. Array Nesting
  * <p>
- * A zero-indexed array A of length N contains all integers from 0 to N-1. Find and return the longest length of set S, where S[i] = {A[i], A[A[i]], A[A[A[i]]], ... } subjected to the rule below.
+ * A zero-indexed array A of length N contains all integers from 0 to N-1.
+ * Find and return the longest length of set S, where S[i] = {A[i], A[A[i]],
+ * A[A[A[i]]], ... } subjected to the rule below.
  * <p>
- * Suppose the first element in S starts with the selection of element A[i] of index = i, the next element in S should be A[A[i]], and then A[A[A[i]]]… By that analogy, we stop adding right before a duplicate element occurs in S.
+ * Suppose the first element in S starts with the selection of element A[i]
+ * of index = i, the next element in S should be A[A[i]], and then A[A[A[i]]]…
+ * By that analogy, we stop adding right before a duplicate element occurs in S.
  * <p>
  * <p>
  * <p>

@@ -107,4 +107,41 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
         }
         return new int[]{begin, end};
     }
+
+    public int[] getRange(int[] arr, int t) {
+        int[] res = {-1, -1};
+        int l = 0;
+        int r = arr.length - 1;
+        int start = -1;
+        int end = -1;
+        int m;
+        //先找左边界
+        while(l <= r) {
+            m = (r - l) / 2 + l;
+            if(arr[m] == t) {
+                start = m;
+                r = m - 1;
+            }else if(arr[m] < t) {
+                l = m + 1;
+            }else {
+                r = m - 1;
+            }
+        }
+        res[0] = start;
+        r = arr.length - 1;
+        //找右边界
+        while(l <= r) {
+            m = (r - l) / 2 + l;
+            if(arr[m] == t) {
+                end = m;
+                l = m + 1;
+            }else if(arr[m] < t) {
+                l = m + 1;
+            }else {
+                r = m - 1;
+            }
+        }
+        res[1] = end;
+        return res;
+    }
 }

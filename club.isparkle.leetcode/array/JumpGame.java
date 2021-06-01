@@ -1,5 +1,7 @@
 package array;
 
+import com.sun.tools.javac.code.Attribute;
+
 /**
  * 55. Jump Game
  *
@@ -33,4 +35,5 @@ public class JumpGame {
         }
         return true;
     }
+
 }

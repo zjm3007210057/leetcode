@@ -156,10 +156,99 @@ public class LongestPalindromicSubstring {
         return s.substring(left, right + 1);
     }
 
+    //采用暴力算法
+    public static String longestPalindromeForce(String s) {
+        char[] chars = s.toCharArray();
+        char[] tmp = new char[chars.length * 2 + 1];
+        int len = tmp.length;
+        int start = 0;
+        int end = 0;
+        for(int i = 1; i < len; i+=2) {
+            tmp[i] = chars[i/2];
+        }
+        for(int i = 0; i < len; i++) {
+            int f = i;
+            int l = i;
+            while(f >= 0 && l < len && tmp[f--] == tmp[l++]);
+            if(l - f - 2 > end - start) {
+                start = f + 1;
+                end = l - 1;
+            }
+            /*if(end - start > len / 2) {
+                break;
+            }*/
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i = (start + 1) / 2; i < end / 2; i ++) {
+            sb.append(chars[i]);
+        }
+        return sb.toString();
+    }
+
+    public static int longestPalindromeManacher(String s) {
+        if(s == null || s.length() < 1) {
+            return 0;
+        }
+        char[] arr = s.toCharArray();
+        char[] chars = str2Manacher(arr);
+        int len = chars.length;
+        int[] pArr = new int[len]; //回文数组
+        pArr[0] = 1;
+        int last = 0; //回文半径最右边界
+        int center = 0; //回文半径中心
+        for(int i = 1; i < len; i++) {
+            int right = last;
+            if(i <= last) {
+                pArr[i] = pArr[2 * center - i];
+                if(pArr[2 * center - i] >= last - i) {
+                    while(chars[right + 1] == chars[2 * i - right - 1]) {
+                        pArr[i]++;
+                        right++;
+                    }
+                }
+            }else {
+                for(int j = i + 1; j < len; j++) {
+                    right = j;
+                    if(2 * i > 0 &&  chars[j] != chars[2 * i - j]) {
+                        break;
+                    }
+                }
+                pArr[i] = right - center;
+            }
+            if(right - i > last - center) {
+                last = right;
+                center = i;
+            }
+        }
+        return last - center - 1;
+    }
+
+    private static char[] str2Manacher(char[] arr) {
+        char[] res = new char[arr.length * 2 + 1];
+        for(int i = 0; i < res.length; i++) {
+            if(i % 2 == 0) {
+                res[i] = '#';
+            }else {
+                res[i] = arr[i / 2];
+            }
+        }
+        return res;
+    }
+
+    public String help(char[] arr, int l, int r) {
+        if(l == r) {
+            return arr[l] + "";
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
-        String s = "abcbe";
+        String s = "accc";
         String ss = longestPalindrome(s);
+        System.out.println(longestPalindromeForce(s));
         System.out.println(ss);
+        char[] chars = new char[5];
+        System.out.println(chars[0]);
     }
 
 }

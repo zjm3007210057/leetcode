@@ -33,17 +33,17 @@ public class CanPlaceFlowers {
             return false;
         }
         int oneNum = 0;
-        int zeorNum = 0;
+        int zeroNum = 0;
         for(int i = 0; i < flowerbed.length; i++) {
             if(flowerbed[i] == 0) {
                 boolean leftOne = false;
                 if(i > 0 && flowerbed[i - 1] == 1) {
                     leftOne = true;
                 }
-                zeorNum++;
+                zeroNum++;
                 i++;
                 while(i < flowerbed.length && flowerbed[i] == 0) {
-                    zeorNum++;
+                    zeroNum++;
                     i++;
                 }
                 boolean rightOne = false;
@@ -51,15 +51,15 @@ public class CanPlaceFlowers {
                     rightOne = true;
                 }
                 if(leftOne && rightOne) {
-                    oneNum += (zeorNum - 1) / 2;
+                    oneNum += (zeroNum - 1) / 2;
                 }else if(leftOne || rightOne) {
-                    oneNum += zeorNum / 2;
+                    oneNum += zeroNum / 2;
                 }else {
-                    oneNum += (zeorNum + 1) / 2;
+                    oneNum += (zeroNum + 1) / 2;
                 }
                 i--;
             }else {
-                zeorNum = 0;
+                zeroNum = 0;
             }
         }
         return oneNum - n >= 0;
