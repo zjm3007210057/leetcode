@@ -112,4 +112,76 @@ public class RegularExpressionMatching {
         }
         return true;
     }
+
+    public boolean isMatchDP(String s, String p) {
+        if(s == null || p == null) {
+            return false;
+        }
+        char[] arr = s.toCharArray();
+        char[] pat = p.toCharArray();
+        int[][] dp = new int[arr.length + 1][pat.length + 1];
+        //dp[i][j]=-1表示该位置还没有计算过，=0表示已经计算过，但是返回false，=1表示计算过，返回true
+        for(int i = 0; i <= arr.length; i++) {
+            for(int j = 0; j <= pat.length; j++) {
+                dp[i][j] = -1;
+            }
+        }
+        return isValid(arr, pat) && isMatchDP(arr, pat, 0, 0, dp);
+    }
+
+    //递归转动态规划，返回前先设置缓存值（数组的值），然后再return
+    private boolean isMatchDP(char[] arr, char[] pat, int s, int f, int[][] dp) {
+        //使用缓存
+        if(dp[s][f] != -1) {
+            return dp[s][f] == 1;
+        }
+        //第一次计算
+
+        if(s == arr.length) {
+            //pat匹配空串
+            if(f == pat.length) {
+                dp[s][f] = 1;
+                return true;
+            }
+            //(f, f+1) f+2.....必须匹配空串，只能是a*b*s*这种格式，也就是各一个字符有一个*
+            if(f + 1 < pat.length && pat[f + 1] == '*') {
+                boolean flag = isMatchDP(arr, pat, s, f + 2, dp);
+                dp[s][f] = flag ? 1 : 0;
+                return flag;
+            }
+            dp[s][f] = 0;
+            return false;
+        }
+        if(f == pat.length) {
+            dp[s][f] = 0;
+            return false;
+        }
+        //s, f普通情况:
+        // 如果f的下一个位置不为*，则pat的f位置必须和arr的s位置匹配上或者pat的f位置为点.且后面的字符都要匹配上
+        if(f >= pat.length - 1 || pat[f+1] != '*') {
+            boolean flag = (arr[s] == pat[f] || pat[f] == '.') && isMatchDP(arr, pat, s + 1, f + 1, dp);
+            dp[s][f] = flag ? 1 : 0;
+            return flag;
+        }
+        //f+1的位置是*
+        if(pat[f] != '.' && arr[s] != pat[f]) {
+            boolean flag = isMatchDP(arr, pat, s, f + 2, dp);
+            dp[s][f] = flag ? 1 : 0;
+            return flag;
+        }
+        //f+1的位置是*且arr[s]=pat[f]
+        if(isMatchDP(arr, pat, s, f + 2, dp)) {
+            dp[s][f] = 1;
+            return true;
+        }
+        while(s < arr.length && (arr[s] == pat[f] || pat[f] == '.')) {
+            if(isMatchDP(arr, pat, s + 1, f + 2, dp)) {
+                dp[s][f] = 1;
+                return true;
+            }
+            s++;
+        }
+        dp[s][f] = 0;
+        return false;
+    }
 }
