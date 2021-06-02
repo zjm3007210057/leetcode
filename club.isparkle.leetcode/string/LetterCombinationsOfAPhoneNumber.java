@@ -3,6 +3,8 @@ package string;
 import java.util.*;
 
 /**
+ * https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+ *
  * 17. Letter Combinations of a Phone Number
  * <p>
  * Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
@@ -20,6 +22,9 @@ import java.util.*;
  * Created by zjm on 2019/9/3 20:06
  */
 public class LetterCombinationsOfAPhoneNumber {
+
+    char[][] phone = {{},{},{'a', 'b', 'c'}, {'d', 'e', 'f'}, {'g', 'h', 'i'}, {'j', 'k', 'l'}, {'m', 'n', 'o'},
+            {'p', 'q', 'r', 's'}, {'t', 'u', 'v'}, {'w', 'x', 'y', 'z'}};
 
     //按数字对应的字符进行全排列
     public List<String> letterCombinations(String digits) {
@@ -59,6 +64,33 @@ public class LetterCombinationsOfAPhoneNumber {
             res.add(s1.pop());
         }
         return res;
+    }
+
+    public List<String> letterCombinations1(String digits) {
+        if(digits == null || digits.length() < 1) {
+            return null;
+        }
+        char[] str = digits.toCharArray();
+        char[] path = new char[str.length];//用来存放选择的字符
+        List<String> res = new ArrayList<>();
+        process(str, 0, path, res);
+        return res;
+    }
+
+    //递归函数
+    //str = ['1', '2']
+    //str = [...,index-1],按出来的结果，存到path里面
+    //str[index...]按完之后，有哪些结果，存放到res里面
+    private void process(char[] str, int index, char[] path, List<String> res) {
+        if(index == str.length) {
+            res.add(String.valueOf(path));
+        }else {
+            char[] chars = phone[str[index] - '0'];
+            for(char c : chars) {
+                path[index] = c;
+                process(str, index + 1, path, res);
+            }
+        }
     }
 
     public static void main(String[] args) {
