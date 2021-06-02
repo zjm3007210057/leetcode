@@ -48,4 +48,28 @@ public class GenerateParentheses {
         }
     }
 
+    //使用递归，左括号n个，右括号n个，
+    public List<String> generateParenthesis1(int n) {
+        List<String> res = new ArrayList();
+        char[] path = new char[n << 1];
+        process(path, 0, 0, n, res);
+        return res;
+    }
+
+    //path存储路径，表示index之前的位置括号已经选好了
+    // leftMinusRight表示左括号减去右括号的数量，leftRest表示还剩于的左括号数目
+    private void process(char[] path, int index, int leftMinusRight, int leftRest, List<String> res) {
+        if(index == path.length) {
+            res.add(String.valueOf(path));
+        }else {
+            if(leftRest > 0) {//左括号还有
+                path[index] = '(';
+                process(path, index + 1, leftMinusRight + 1, leftRest - 1, res);
+            }
+            if(leftMinusRight > 0) {
+                path[index] = ')';
+                process(path, index + 1, leftMinusRight - 1, leftRest, res);
+            }
+        }
+    }
 }
